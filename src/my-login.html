@@ -1,0 +1,57 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-login">
+  
+  <template>
+    <div style="text-align: center; padding: 80px;">
+        <firebase-auth id="auth" user="{{user}}" status-known="{{statusKnow}}" provider="google" on-error="handleError">
+        </firebase-auth>
+
+        <paper-button raised on-tap="login" hidden$="[[user]]">Login</paper-button>
+        <paper-button raised on-tap="logout" hidden$="[[!user]]">Logout</paper-button>
+
+      <div>
+          <template is="dom-if" if="[[user]]">
+            <h1>Bem vindo, [[user.displayName]]!</h1>
+          </template>
+      </div>
+    </div>
+  </template>
+   
+  <script>
+
+  Polymer({
+  is: 'my-login',
+  properties: {
+    user: {
+      type: Object
+    },
+    statusKnow: {
+      type: Object
+    }
+  },
+
+  login: function () {
+    return this.$.auth.signInWithPopup();
+  },
+  logout: function () {
+    return this.$.auth.signOut();
+  }
+
+});
+
+</script>
+</dom-module>
