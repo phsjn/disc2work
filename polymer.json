@@ -4,6 +4,7 @@
   "fragments": [
     "src/disk2work-login.html",
     "src/disk2work-notes.html",
+    "src/disk2work-checklist.html",
     "src/my-view404.html"
   ],
   "sources": [

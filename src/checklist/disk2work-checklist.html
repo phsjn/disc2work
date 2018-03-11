@@ -1,0 +1,62 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../shared-styles.html">
+
+
+<dom-module id="disk2work-checklist">
+  <template>
+      <style>
+          .task {
+              display: flex;
+              align-items: center;
+          }
+          paper-input {
+              display: inline-block;
+          }
+      </style>
+  <firebase-auth user="{{user}}"></firebase-auth>
+  <firebase-query id="query" 
+  path="/users/[[user.uid]]/checklists"
+  data="{{tasks}}">
+  </firebase-query>
+  <div style="padding: 80px;">
+    <h3>Tarefas a fazer:</h3>
+    <dom-repeat 
+    items="{{tasks}}" 
+    as="task"
+    filter="isNotCompleted"
+    observe="completed">
+        <template>
+            <div class="task">
+                <paper-checkbox checked="{{task.completed}}"></paper-checkbox>
+                <paper-input label="Tarefa" no-label-float value="{{task.name}}"></paper-input>
+            </div>
+        </template>
+    </dom-repeat>
+
+    <h3>Tarefas Realizadas:</h3>
+    <dom-repeat 
+    items="{{tasks}}" 
+    as="task"
+    filter="isCompleted"
+    observe="completed">
+        <template>
+            <div class="task">
+                <paper-checkbox checked="{{task.completed}}"></paper-checkbox>
+                <paper-input label="Tarefa" no-label-float value="{{task.name}}"></paper-input>
+            </div>
+        </template>
+    </dom-repeat>
+
+    <paper-button on-tap="Adicionar">Adicionar Tarefa</paper-button>
+  </div>
+</template>
+<script src="disk2work-checklist.js"></script>
+</dom-module>

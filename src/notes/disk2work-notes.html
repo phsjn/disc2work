@@ -24,7 +24,7 @@
         <template is="dom-repeat" items="[[notes]]" as="note">
           <li>
             <p class="content">[[note.content]]</p>
-            <paper-icon-button icon="clear" note="[[notes]]" on-tap="Remover"></paper-icon-button>
+            <paper-icon-button icon="clear" note="[[note]]" on-tap="Remover"></paper-icon-button>
           </li>
         </template>
       </ul>
