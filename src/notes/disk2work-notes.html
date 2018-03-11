@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="../shared-styles.html">
+
+
+<dom-module id="disk2work-notes">
+  <template>
+  <firebase-auth user="{{user}}"></firebase-auth>
+  <firebase-query id="query" 
+  path="/users/[[user.uid]]/notes"
+  data="{{notes}}">
+  </firebase-query>
+
+  <div id="card" style="text-align: center; padding: 80px;">
+    <div id="notes">
+      <ul id="notes-list">
+        <template is="dom-repeat" items="[[notes]]" as="note">
+          <li>
+            <p class="content">[[note.content]]</p>
+            <paper-icon-button icon="clear" note="[[notes]]" on-tap="Remover"></paper-icon-button>
+          </li>
+        </template>
+      </ul>
+
+      <paper-input id="input" label="Enviar nota..."></paper-input>
+      <div id="notes-controls">
+        <paper-button id="Adicionar" on-tap="Adicionar">Adicionar Nota</paper-button>
+      </div>
+    </div>
+  </div>
+</template>
+  <script src="disk2work-notes.js"></script>
+
+</dom-module>
