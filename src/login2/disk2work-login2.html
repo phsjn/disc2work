@@ -1,0 +1,36 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="disk2work-login2">
+  <template>
+    <firebase-auth id="auth"></firebase-auth>
+    <div style="text-align: center; padding: 80px;">
+      <form is="iron-form" id="form" method="post" action="/form/handler">
+        <paper-card heading="Login Disk2Work">
+          <div class="card-content">
+            <paper-input name="email" label="Email" auto-validate required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" error-message="Email is invalid" value={{email}}></paper-input>
+            <paper-input name="password" label="Password" type="password" auto-validate required value={{password}}></paper-input>
+          </div>
+          <div class="card-actions">
+            <paper-button raised on-click="submitForm">Sign In</paper-button>
+          </div>
+        </paper-card>
+      </form>
+    </div>
+  </template>
+  <script src="disk2work-login2.js"></script>
+</dom-module>

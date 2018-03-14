@@ -24,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="my-icons.html">
 
 <link rel="lazy-import" href="login/disk2work-login.html">
+<link rel="lazy-import" href="login2/disk2work-login2.html">
 <link rel="lazy-import" href="notes/disk2work-notes.html">
 <link rel="lazy-import" href="checklist/disk2work-checklist.html">
 <link rel="lazy-import" href="my-view404.html">
@@ -86,8 +87,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="login" href="[[rootPath]]login">Login</a>
-          <a name="notes" href="[[rootPath]]notes">Notas</a>
+          <a name="login" href="[[rootPath]]login">Login - Social</a>
+          <a name="login2" href="[[rootPath]]login2">Login - Convencional</a>
+          <a name="notes" href="[[rootPath]]notes">Notas - Usando firebase</a>
           <a name="checklist" href="[[rootPath]]checklist">Checklist</a>
         </iron-selector>
       </app-drawer>
@@ -116,6 +118,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <disk2work-login name="login"></disk2work-login>
+          <disk2work-login2 name="login2"></disk2work-login2>
           <disk2work-notes name="notes"></disk2work-notes>
           <disk2work-checklist name="checklist"></disk2work-checklist>
           <my-view404 name="view404"></my-view404>
@@ -129,7 +132,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // preventable, allowing for better scrolling performance.
     Polymer.setPassiveTouchGestures(true);
 
-    class MyApp extends Polymer.Element {
+    class MyApp extends Polymer.Element  {
       static get is() { return 'my-app'; }
 
       static get properties() {

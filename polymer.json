@@ -3,6 +3,7 @@
   "shell": "src/my-app.html",
   "fragments": [
     "src/disk2work-login.html",
+    "src/disk2work-login2.html",
     "src/disk2work-notes.html",
     "src/disk2work-checklist.html",
     "src/my-view404.html"
