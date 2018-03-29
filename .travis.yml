@@ -8,7 +8,7 @@ deploy:
   on:
     branch: develop
 script:
-  - bash ./gpages_build.sh <github-username> <repo-name> <git-name> <git-e_mail>
+  - bash ./gpages_build.sh <phsjn> <disc2work> <Pedro Oliveira> <ph_sjn@yahoo.com.br>
 before_script:
 - npm install bower
 - export PATH=$PWD/node_modules/.bin:$PATH
