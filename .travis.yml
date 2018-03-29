@@ -1,5 +1,12 @@
 language: node_js
 node_js: stable
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: EfAFVfGI16t61RoPpDs6kA
+  keep-history: true
+  on:
+    branch: develop
 script:
   - bash ./gpages_build.sh <github-username> <repo-name> <git-name> <git-e_mail>
 before_script:
