@@ -60,6 +60,6 @@ git config user.email $email
 # send it all to github
 git add -A .
 git commit -am 'Deploy to GitHub Pages'
-git push --force --quiet -u "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" gh-pages > /dev/null 2>&1
+git push --force --quiet -u "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" develop:gh-pages > /dev/null 2>&1
 
 popd >/dev/null
