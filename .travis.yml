@@ -1,8 +1,10 @@
-language: node_js
-sudo: false
 dist: trusty
-node_js: stable
-os: osx
+sudo: false
+group: beta
+
+language: node_js
+node_js:
+- node
 deploy:
   provider: pages
   skip-cleanup: true
@@ -11,23 +13,16 @@ deploy:
   on:
   branch: develop
 addons:
-  firefox: latest
-  chrome: stable
+  firefox: latest-esr
 cache:
   directories:
   - node_modules
+  - "$HOME/.cache/bower"
+before_install:
+- "if [ -d node_modules ] && [ x$(cat node_modules/.last-node-version 2>/dev/null) != x$(node -e 'console.log(process.version)') ]; then npm rebuild --update-binary && node -e 'console.log(process.version)' > node_modules/.last-node-version; fi"
 before_script:
-- npm install -g bower gulp-cli@1
-- bower install
-- gulp lint-eslint
-- >-
-  npm run update-types && git diff --exit-code || (echo -e
-  '\n\033[31mERROR:\033[0m Typings are stale. Please run "npm run
-  update-types".' && false)
+- npm install web-component-tester bower polylint
+- $(npm bin)/bower install
+- $(npm bin)/polylint --no-recursion
 script:
-- wct -l chrome -l firefox
-- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then travis_wait 30 ./util/travis-sauce-test.sh; fi
-env:
-  global:
-  - secure: bfF/o1ewpOxDNqTzWfvlwgRgGfP8OXhSQLLdEwZ6izO9tckMJuSNghk3qBXCEQJwTcUEyXP6EqfzIrRAvDXPa0H3OoinbrooDyV2wIDaVRK++WR2iZIqzqo3hGOdzm4tdrGJZe5av5Rk661Hls8aPfLbjdzcGuYXi8B4wZq2xMI=
-  - secure: jBrKtQBdoL2dsXi9BQpw5tMkYZOsQAy2iSB+0xPOxhPI8EbXKnm8OhWQDEJ5TdduLWUxLLc12IJwjBy9ocLlC1ZvzgOXNfqOUkLD03qSPnyT/LomTXeP4XuojUAemc/w1MHd61nFz4YJaO8cQ+yfy6GOX2susabW+Y80mnIeGJk=
+- xvfb-run $(npm bin)/wct
