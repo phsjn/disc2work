@@ -2,5 +2,12 @@ language: node_js
 node_js:
   - "iojs"
   - "7"
-  sudo: enabled
-  os: osx
+sudo: enabled
+os: osx
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: EfAFVfGI16t61RoPpDs6kA
+  keep-history: true
+  on:
+    branch: develop
