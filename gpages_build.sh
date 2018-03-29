@@ -29,7 +29,7 @@ mkdir temp && cd temp
 
 # make folder (same as input, no checking!)
 mkdir $repo
-git clone "https://${GH_TOKEN}@${GH_REF}" --single-branch
+git clone "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" --single-branch
 
 # switch to gh-pages branch
 pushd $repo >/dev/null
@@ -60,6 +60,6 @@ git config user.email $email
 # send it all to github
 git add -A .
 git commit -am 'Deploy to GitHub Pages'
-git push --force --quiet -u "https://${GH_TOKEN}@${GH_REF}" gh-pages > /dev/null 2>&1
+git push --force --quiet -u "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" gh-pages > /dev/null 2>&1
 
 popd >/dev/null
