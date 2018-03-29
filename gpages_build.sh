@@ -29,7 +29,7 @@ mkdir temp && cd temp
 
 # make folder (same as input, no checking!)
 mkdir $repo
-git clone "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" --single-branch
+git clone "https://${EfAFVfGI16t61RoPpDs6kA}@${https://github.com/phsjn/disc2work.git}" develop:gh-pages
 
 # switch to gh-pages branch
 pushd $repo >/dev/null
